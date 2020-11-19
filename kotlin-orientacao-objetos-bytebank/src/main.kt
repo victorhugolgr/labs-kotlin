@@ -1,3 +1,7 @@
 fun main(){
-    print("Olá mundo!")
+    println("Olá mundo!")
+    val titular = "Victor"
+
+
+    println("titular $titular")
 }
