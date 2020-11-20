@@ -1,13 +1,11 @@
 fun main() {
     println("Olá mundo!")
 
-    val contaVictor = Conta();
-    contaVictor.titular = "Victor";
+    val contaVictor = Conta("Victor", 2);
 
     println(contaVictor.titular);
 
-    val contaJaque = Conta();
-    contaJaque.titular = "Jaque";
+    val contaJaque = Conta("Jaque", 1);
     contaJaque.deposita(2000.0)
     println(contaJaque.titular);
 
@@ -31,9 +29,7 @@ fun main() {
 
 }
 
-class Conta {
-    var titular = ""
-    var numero = 0
+class Conta(var titular: String, var numero: Int) {
     var saldo = 0.0
         private set
 
