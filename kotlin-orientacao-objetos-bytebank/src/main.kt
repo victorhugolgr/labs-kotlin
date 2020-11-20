@@ -8,6 +8,7 @@ fun main() {
 
     val contaJaque = Conta();
     contaJaque.titular = "Jaque";
+    contaJaque.saldo = 2000.0
     println(contaJaque.titular);
 
     println("Depositando na conta do victor")
@@ -22,6 +23,11 @@ fun main() {
     println("Sancando da conta do Victor")
     conta.saca(150.0)
     println(conta.saldo)
+
+    println("Tranferindo")
+    contaJaque.transfere(100.0, conta)
+    println(conta.saldo)
+    println(contaJaque.saldo)
 
 }
 
@@ -38,6 +44,15 @@ class Conta {
         if(this.saldo >= valor){
             saldo -= valor
         }
+    }
+
+    fun transfere(valor: Double, destino: Conta): Boolean {
+        if(saldo >= valor) {
+            saldo -= valor
+            destino.depositar(valor)
+            return true
+        }
+        return false
     }
 }
 
