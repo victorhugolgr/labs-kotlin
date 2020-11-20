@@ -1,42 +1,42 @@
 fun main() {
     println("Olá mundo!")
 
-    val conta = Conta();
-    conta.titular = "Victor";
+    val contaVictor = Conta();
+    contaVictor.titular = "Victor";
 
-    println(conta.titular);
+    println(contaVictor.titular);
 
     val contaJaque = Conta();
     contaJaque.titular = "Jaque";
-    contaJaque.saldo = 2000.0
+    contaJaque.setSaldo(2000.0)
     println(contaJaque.titular);
 
     println("Depositando na conta do victor")
-    conta.depositar(200.0)
-    println(conta.saldo)
+    contaVictor.deposita(200.0)
+    println(contaVictor.getSaldo())
 
 
     println("Sancando da conta do Victor")
-    conta.saca(100.0)
-    println(conta.saldo)
+    contaVictor.saca(100.0)
+    println(contaVictor.getSaldo())
 
     println("Sancando da conta do Victor")
-    conta.saca(150.0)
-    println(conta.saldo)
+    contaVictor.saca(150.0)
+    println(contaVictor.getSaldo())
 
     println("Tranferindo")
-    contaJaque.transfere(100.0, conta)
-    println(conta.saldo)
-    println(contaJaque.saldo)
+    contaJaque.transfere(100.0, contaVictor)
+    println(contaVictor.getSaldo())
+    println(contaJaque.getSaldo())
 
 }
 
 class Conta {
     var titular = "";
     var numero = 0;
-    var saldo = 0.0;
+    private var saldo = 0.0;
 
-    fun depositar(valor: Double) {
+    fun deposita(valor: Double) {
         this.saldo += valor
     }
 
@@ -49,10 +49,18 @@ class Conta {
     fun transfere(valor: Double, destino: Conta): Boolean {
         if(saldo >= valor) {
             saldo -= valor
-            destino.depositar(valor)
+            destino.deposita(valor)
             return true
         }
         return false
+    }
+
+    fun getSaldo(): Double{
+        return saldo
+    }
+
+    fun setSaldo(saldo: Double){
+        this.saldo = saldo
     }
 }
 
