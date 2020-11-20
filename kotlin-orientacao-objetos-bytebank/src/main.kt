@@ -8,36 +8,40 @@ fun main() {
 
     val contaJaque = Conta();
     contaJaque.titular = "Jaque";
-    contaJaque.setSaldo(2000.0)
+    contaJaque.deposita(2000.0)
     println(contaJaque.titular);
 
     println("Depositando na conta do victor")
     contaVictor.deposita(200.0)
-    println(contaVictor.getSaldo())
+    println(contaVictor.saldo)
 
 
     println("Sancando da conta do Victor")
     contaVictor.saca(100.0)
-    println(contaVictor.getSaldo())
+    println(contaVictor.saldo)
 
     println("Sancando da conta do Victor")
     contaVictor.saca(150.0)
-    println(contaVictor.getSaldo())
+    println(contaVictor.saldo)
 
     println("Tranferindo")
     contaJaque.transfere(100.0, contaVictor)
-    println(contaVictor.getSaldo())
-    println(contaJaque.getSaldo())
+    println(contaVictor.saldo)
+    println(contaJaque.saldo)
 
 }
 
 class Conta {
-    var titular = "";
-    var numero = 0;
-    private var saldo = 0.0;
+    var titular = ""
+    var numero = 0
+    var saldo = 0.0
+        private set
+
 
     fun deposita(valor: Double) {
-        this.saldo += valor
+        if(valor > 0){
+            this.saldo += valor
+        }
     }
 
     fun saca(valor: Double){
@@ -53,14 +57,6 @@ class Conta {
             return true
         }
         return false
-    }
-
-    fun getSaldo(): Double{
-        return saldo
-    }
-
-    fun setSaldo(saldo: Double){
-        this.saldo = saldo
     }
 }
 
