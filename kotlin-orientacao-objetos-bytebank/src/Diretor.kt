@@ -16,4 +16,6 @@ class Diretor(
         }
         return false
     }
+
+    override val bonificacao: Double get() = salario * 0.3
 }

@@ -15,4 +15,9 @@ class Gerente(
         }
         return false
     }
+
+    override val bonificacao: Double
+        get() {
+            return salario * 0.2
+        }
 }
