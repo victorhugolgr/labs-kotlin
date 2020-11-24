@@ -1,34 +1,36 @@
 fun main() {
-    val victor = Gerente(
-        nome = "Alex",
-        cpf = "1111111",
-        salario = 1_000.0,
-        senha = 1
+
+    val contaCorrente = ContaCorrente(
+        titular = "Victor",
+        numero = 1000
     )
 
-    val jaque = Funcionario(
-        nome = "Jaque",
-        cpf = "22222",
-        salario = 900.0
+    val contaPoupanca = ContaPoupanca(
+        titular = "Jaque",
+        numero = 2000
     )
 
-    val roberto = Diretor(
-        nome = "Roberto",
-        senha = 1,
-        cpf = "33333",
-        salario = 3_000.0,
-        plr = 200
-    )
+    contaCorrente.deposita(1000.0);
+    contaPoupanca.deposita(1000.0);
 
+    println("Saldo corrente: ${contaCorrente.saldo}")
+    println("Saldo poupanca: ${contaPoupanca.saldo}")
 
+    contaCorrente.saca(100.0)
+    contaPoupanca.saca(100.0)
 
+    println("Saldo corrente: ${contaCorrente.saldo}")
+    println("Saldo poupanca: ${contaPoupanca.saldo}")
 
-    val calculadora = CalculadoraBonificacao()
-    calculadora.registra(victor)
-    calculadora.registra(jaque)
-    calculadora.registra(roberto)
+    contaCorrente.transfere(100.0, contaPoupanca)
 
-    println("Total de bonificação : ${calculadora.total}")
+    println("Saldo corrente: ${contaCorrente.saldo}")
+    println("Saldo poupanca: ${contaPoupanca.saldo}")
+
+    contaPoupanca.transfere(100.0, contaCorrente)
+
+    println("Saldo corrente: ${contaCorrente.saldo}")
+    println("Saldo poupanca: ${contaPoupanca.saldo}")
 }
 
 
